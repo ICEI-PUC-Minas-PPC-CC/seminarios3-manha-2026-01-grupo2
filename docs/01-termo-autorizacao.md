@@ -15,7 +15,7 @@
 
 | Campo | Informação |
 | ------- | ----------- |
-| Nome do Grupo | |
+| Nome do Grupo |Grupo 2|
 | Integrantes | André Couto, João Brasil |
 | E-mail de contato |andrecoutolima@gmail.com // joaovictorbrmmaciel@gmail.com  |
 | Telefone de contato | (35) 99200-5154 // (35) 98421-6363  |
