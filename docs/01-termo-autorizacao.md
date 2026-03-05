@@ -24,8 +24,8 @@
 
 | Campo | Informação |
 | ------- | ----------- |
-| Nome da instituição | |
-| Endereço | |
+| Nome da instituição | Centro Municipal de Atendimento Educacional Especializado Dr. Tarso de Coimbra |
+| Endereço |R. Mario Xandó de Oliveira, 2 - São Geraldo, Poços de Caldas - MG, 37701-335 |
 | Nome do responsável | |
 | Cargo/Função | |
 | Telefone ou e-mail da instituição | |
