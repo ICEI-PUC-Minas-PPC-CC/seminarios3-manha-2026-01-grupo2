@@ -10,10 +10,10 @@
 
 | Campo | Informação |
 | ------- | ----------- |
-| **Nome do Grupo** | *(preencher)* |
-| **Integrantes** | *(listar todos)* |
-| **E-mail de contato** | *(preencher)* |
-| **Comunidade parceira** | *(preencher)* |
+| **Nome do Grupo** | *Grupo 2* |
+| **Integrantes** | *André Couto/João Brasil* |
+| **E-mail de contato** | *andrecoutolima@gmail.com/joaovictorbrmmaciel@gmail.com* |
+| **Comunidade parceira** | *Centro Dr. Tarso de Coimbra* |
 
 ---
 
