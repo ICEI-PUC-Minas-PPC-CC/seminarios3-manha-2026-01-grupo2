@@ -16,9 +16,9 @@
 | Campo | Informação |
 | ------- | ----------- |
 | Nome do Grupo |Grupo 2|
-| Integrantes | André Couto, João Brasil |
-| E-mail de contato |andrecoutolima@gmail.com // joaovictorbrmmaciel@gmail.com  |
-| Telefone de contato | (35) 99200-5154 // (35) 98421-6363  |
+| Integrantes | André Couto, João Brasil, Kael Vianello |
+| E-mail de contato |andrecoutolima@gmail.com // joaovictorbrmmaciel@gmail.com // kaeelvianello@gmail.com |
+| Telefone de contato | (35) 99200-5154 // (35) 98421-6363 // (35) 98839-4219 |
 
 ## 2. Dados da Comunidade / Instituição Parceira
 
