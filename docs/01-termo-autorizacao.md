@@ -3,7 +3,7 @@
 > **Status:**  (adicione um "x" para completar cada nível)
 
 - [x] Visualizado
-- [ ] Pendente
+- [x] Pendente
 - [ ] Enviado ao professor
 - [ ] Aprovado  
 
@@ -16,9 +16,9 @@
 | Campo | Informação |
 | ------- | ----------- |
 | Nome do Grupo |Grupo 2|
-| Integrantes | André Couto, João Brasil, Kael Vianello |
-| E-mail de contato |andrecoutolima@gmail.com // joaovictorbrmmaciel@gmail.com // kaeelvianello@gmail.com |
-| Telefone de contato | (35) 99200-5154 // (35) 98421-6363 // (35) 98839-4219 |
+| Integrantes | André Couto, João Brasil, Kael Vianello, Gustavo Franco Reis, Mateus Amorim Silva, Miguel Silvera Oliveira |
+| E-mail de contato |andrecoutolima@gmail.com // joaovictorbrmmaciel@gmail.com // kaeelvianello@gmail.com // guporva@hotmail.com|
+| Telefone de contato | (35) 99200-5154 // (35) 98421-6363 // (35) 98839-4219 // (35)98426-8301|
 
 ## 2. Dados da Comunidade / Instituição Parceira
 
@@ -36,16 +36,20 @@
 
 | Campo | Informação |
 | ------- | ----------- |
-| Título/Tema da aplicação | |
-| Público-alvo | |
-| Nº estimado de usuários | |
-| Faixa etária do público | |
-| Tecnologias previstas | |
-| Hospedagem prevista | |
+| Título/Tema da aplicação | Inclusão ao Português |
+| Público-alvo |Jovens e adultos em busca de aprender a escrita em braile e aprofundarem-se no Português |
+| Nº estimado de usuários |50|
+| Faixa etária do público |12 à 40 |
+| Tecnologias previstas |Computadores, Rede de Internet, VisualCode Studio, e outras a serem analizadas |
+| Hospedagem prevista |World wide web |
 
 ### Breve descrição da aplicação e sua finalidade
 
-(Descreva aqui o software que será desenvolvido, seus objetivos e como atende às demandas da comunidade.)
+O grupo 2 após extensa discussão, decidiu por fim desenvolver um site gratuito
+que busca ensinar e aprofundar os conhecimentos da língua portuguesa através de jogos
+interativos de fácil compreensão e alta efetividade, tendo em vista também a parceria com a escola 
+Tarso de Coimbra, a pagina da Web contará com atividades exclusivas para auxílio de deficientes 
+auditivos.
 
 ## 4. Levantamento de Demandas da Comunidade
 
