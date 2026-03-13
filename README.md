@@ -19,7 +19,11 @@
 
 ## 🎯 Software a Ser Desenvolvido
 
-(Descreva brevemente a aplicação que será desenvolvida e seu objetivo.)
+O grupo 2 após extensa discussão, decidiu por fim desenvolver um site gratuito
+que busca ensinar e aprofundar os conhecimentos da língua portuguesa através de jogos
+interativos de fácil compreensão e alta efetividade, tendo em vista também a parceria com a escola 
+Tarso de Coimbra, a pagina da Web contará com atividades exclusivas para auxílio de deficientes 
+auditivos.
 
 ---
 
