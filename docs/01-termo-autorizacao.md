@@ -41,7 +41,7 @@
 | Nº estimado de usuários |50|
 | Faixa etária do público |12 à 40 |
 | Tecnologias previstas |Computadores, Rede de Internet, VisualCode Studio, e outras a serem analizadas |
-| Hospedagem prevista |World wide web |
+| Hospedagem prevista | |
 
 ### Breve descrição da aplicação e sua finalidade
 
