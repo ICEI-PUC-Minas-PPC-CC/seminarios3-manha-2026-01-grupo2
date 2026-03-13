@@ -11,7 +11,7 @@
 | Campo | Informação |
 | ------- | ----------- |
 | **Nome do Grupo** | *Grupo 2* |
-| **Integrantes** | *André Couto/João Brasil* |
+| **Integrantes** | *André Couto/João Brasil/Gustavo Franco Reis/Kael Vianello/Mateus Amorim Silva/Miguel Silveira Oliveira* |
 | **E-mail de contato** | *andrecoutolima@gmail.com/joaovictorbrmmaciel@gmail.com* |
 | **Comunidade parceira** | *Centro Dr. Tarso de Coimbra* |
 
