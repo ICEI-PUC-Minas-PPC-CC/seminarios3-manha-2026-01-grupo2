@@ -1,0 +1,603 @@
+:root {
+  --bg: oklch(96% 0.004 100);
+  --surface: oklch(100% 0 0);
+  --fg: oklch(15% 0.02 100);
+  --muted: oklch(40% 0.02 100);
+  --border: oklch(15% 0.02 100);
+  --accent: oklch(60% 0.22 25);
+  --yellow: oklch(88% 0.17 95);
+  --green: oklch(78% 0.17 145);
+  --blue: oklch(75% 0.14 245);
+  --pink: oklch(78% 0.15 355);
+  --font-display: "Times New Roman", "Iowan Old Style", Georgia, serif;
+  --font-body: ui-monospace, "IBM Plex Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+/* Base: high-contrast brutalist grid with large targets for young students. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--border) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in oklch, var(--border) 8%, transparent) 1px, transparent 1px),
+    var(--bg);
+  background-size: 42px 42px;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a.button {
+  min-height: 44px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 4px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 16px;
+  top: 12px;
+  z-index: 20;
+  transform: translateY(-150%);
+  background: var(--accent);
+  color: var(--surface);
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in oklch, var(--bg) 94%, white);
+  border-bottom: 2px solid var(--border);
+}
+
+.nav-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  inline-size: 42px;
+  block-size: 42px;
+  background: var(--accent);
+  color: var(--surface);
+  border: 2px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a,
+.menu-button,
+.text-button {
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  padding: 10px 12px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.menu-button {
+  display: none;
+}
+
+.section-grid,
+.info-band,
+.games-section,
+.access-section,
+.site-footer,
+.game-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.hero {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.8fr);
+  gap: 42px;
+  align-items: center;
+  padding: 58px 0;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+h1 {
+  max-width: 11ch;
+  font-size: clamp(66px, 10vw, 150px);
+}
+
+h2 {
+  font-size: clamp(42px, 6vw, 82px);
+}
+
+h3 {
+  font-size: 34px;
+}
+
+.lead {
+  max-width: 66ch;
+  margin: 26px 0 0;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  padding: 13px 18px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.button.secondary {
+  background: var(--surface);
+  color: var(--fg);
+}
+
+.hero-board {
+  /* The board acts as the main visual signal: words, score, and signs. */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+  transform: rotate(-1deg);
+}
+
+.board-card,
+.score-tile {
+  min-height: 130px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-weight: 900;
+  font-size: clamp(24px, 4vw, 44px);
+}
+
+.card-large {
+  grid-column: span 2;
+  background: var(--yellow);
+}
+
+.accent-card {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.score-tile {
+  background: var(--green);
+  text-align: center;
+}
+
+.score-tile span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 72px;
+  line-height: 0.9;
+}
+
+.score-tile small {
+  display: block;
+  max-width: 12ch;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.info-band,
+.access-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 42px;
+  padding: 70px 0;
+  border-top: 2px solid var(--border);
+}
+
+.info-band > p,
+.access-copy p {
+  max-width: 68ch;
+  margin: 0;
+  font-size: 19px;
+}
+
+.games-section {
+  padding: 70px 0;
+  border-top: 2px solid var(--border);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.game-card {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+}
+
+.game-card:nth-child(2) {
+  background: var(--blue);
+}
+
+.game-card:nth-child(3) {
+  background: var(--pink);
+}
+
+.game-card p {
+  margin: 0;
+}
+
+.game-card .button {
+  margin-top: auto;
+}
+
+.game-icon {
+  display: grid;
+  place-items: center;
+  inline-size: 86px;
+  block-size: 86px;
+  border: 2px solid var(--border);
+  background: var(--yellow);
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.access-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.access-list li {
+  padding: 16px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.site-footer {
+  padding: 28px 0 42px;
+  border-top: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.game-page {
+  padding: 42px 0 72px;
+}
+
+/* Game pages keep instructions fixed on desktop and the activity dominant. */
+.game-shell {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.game-intro {
+  position: sticky;
+  top: 104px;
+}
+
+.game-intro h1 {
+  max-width: 8ch;
+  font-size: clamp(58px, 8vw, 112px);
+}
+
+.game-intro p:not(.eyebrow) {
+  max-width: 45ch;
+  font-size: 18px;
+}
+
+.play-card {
+  min-height: 560px;
+  padding: 24px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.play-card h2 {
+  max-width: 14ch;
+  margin-bottom: 24px;
+  font-size: clamp(38px, 5vw, 70px);
+}
+
+.sentence {
+  margin: 20px 0 28px;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 70px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.answer-option,
+.memory-card {
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.answer-option {
+  min-height: 86px;
+  padding: 16px;
+  font-size: clamp(20px, 3vw, 34px);
+}
+
+.answer-option:hover,
+.memory-card:hover,
+.text-button:hover,
+.button:hover,
+.nav-links a:hover {
+  transform: translate(-2px, -2px);
+}
+
+.answer-option.correct {
+  background: var(--green);
+}
+
+.answer-option.wrong {
+  background: var(--pink);
+}
+
+.feedback {
+  min-height: 32px;
+  margin: 22px 0;
+  font-weight: 800;
+}
+
+.feedback.success {
+  color: oklch(42% 0.14 145);
+}
+
+.feedback.error {
+  color: oklch(50% 0.2 25);
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  text-align: center;
+  font-size: clamp(16px, 2.4vw, 26px);
+}
+
+.memory-card.is-hidden {
+  background: var(--fg);
+  color: transparent;
+}
+
+/* Hidden cards still expose a clear visual affordance without using audio. */
+.memory-card.is-hidden::after {
+  content: "?";
+  color: var(--surface);
+  font-family: var(--font-display);
+  font-size: 58px;
+}
+
+.memory-card.is-matched {
+  background: var(--green);
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .info-band,
+  .access-section,
+  .game-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-intro {
+    position: static;
+  }
+
+  .game-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-shell {
+    width: min(100% - 24px, 1180px);
+    min-height: 64px;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .nav-links:not(.always-visible) {
+    position: absolute;
+    inset-inline: 12px;
+    top: 72px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 8px;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .always-visible {
+    gap: 4px;
+  }
+
+  .always-visible a {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .section-grid,
+  .info-band,
+  .games-section,
+  .access-section,
+  .site-footer,
+  .game-shell {
+    width: min(100% - 24px, 1180px);
+  }
+
+  h1 {
+    font-size: clamp(54px, 17vw, 88px);
+  }
+
+  h2 {
+    font-size: clamp(36px, 13vw, 58px);
+  }
+
+  .hero-board,
+  .answer-grid,
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-large {
+    grid-column: auto;
+  }
+
+  .play-card {
+    min-height: auto;
+    padding: 16px;
+  }
+}
