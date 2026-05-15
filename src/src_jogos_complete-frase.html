@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complete a frase | Quizzer</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body data-page="frase">
+    <a class="skip-link" href="#conteudo">Pular para o jogo</a>
+
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Navegação principal">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">Q</span>
+          <span>Quizzer</span>
+        </a>
+        <div class="nav-links always-visible">
+          <a href="../index.html#jogos">Jogos</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="memoria.html">Memória</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="game-page" id="conteudo">
+      <section class="game-shell" aria-labelledby="frase-titulo">
+        <div class="game-intro">
+          <p class="eyebrow">Jogo 02</p>
+          <h1 id="frase-titulo">Complete a frase</h1>
+          <p>Leia com calma e toque na palavra que deixa a frase correta.</p>
+        </div>
+
+        <div class="play-card">
+          <div class="progress-row">
+            <span id="phrase-progress">Frase 1 de 5</span>
+            <span id="phrase-score">0 pontos</span>
+          </div>
+          <p class="sentence" id="phrase-question">Carregando frase...</p>
+          <div class="answer-grid" id="phrase-options" aria-label="Palavras para completar a frase"></div>
+          <p class="feedback" id="phrase-feedback" role="status" aria-live="polite">Escolha uma palavra.</p>
+          <button class="button secondary" id="phrase-next" type="button">Próxima frase</button>
+        </div>
+      </section>
+    </main>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
