@@ -34,8 +34,17 @@
     return button;
   }
 
+  // Embaralha um array sem alterar o original. Usado para variar
+  // a ordem das perguntas e das opcoes a cada partida.
+  function shuffle(items) {
+    return items
+      .map((item) => ({ item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ item }) => item);
+  }
+
   function initQuiz() {
-    const questions = [
+    const questionBank = [
       {
         prompt: "Qual palavra está escrita corretamente?",
         options: ["Excessão", "Exceção", "Eceção", "Esceção"],
@@ -65,8 +74,68 @@
         options: ["coraçao", "coração", "corassão", "corasão"],
         answer: "coração",
         help: "Coração usa ç e ão."
+      },
+      {
+        prompt: "Qual é o plural de 'cidadão'?",
+        options: ["cidadões", "cidadãos", "cidadãoes", "cidadans"],
+        answer: "cidadãos",
+        help: "Cidadão faz plural cidadãos."
+      },
+      {
+        prompt: "Qual palavra está escrita corretamente?",
+        options: ["pesquisa", "pesquiza", "peskisa", "pescuisa"],
+        answer: "pesquisa",
+        help: "Pesquisa se escreve com s, não com z."
+      },
+      {
+        prompt: "Complete: A professora ___ o livro para nós.",
+        options: ["leu", "leeu", "lê-o", "leuo"],
+        answer: "leu",
+        help: "Leu é o passado de ler."
+      },
+      {
+        prompt: "Qual palavra tem o som de 'x' como em 'táxi'?",
+        options: ["enxame", "exame", "enxada", "enxergar"],
+        answer: "exame",
+        help: "Em 'exame', o x tem som de 'z'/'cs', igual a 'táxi'."
+      },
+      {
+        prompt: "Qual frase está correta?",
+        options: ["Houveram problemas.", "Houve problemas.", "Ouve problemas.", "Houvi problemas."],
+        answer: "Houve problemas.",
+        help: "O verbo 'haver' no sentido de existir fica no singular."
+      },
+      {
+        prompt: "Qual é o sinônimo de 'rápido'?",
+        options: ["lento", "veloz", "calmo", "parado"],
+        answer: "veloz",
+        help: "Veloz significa o mesmo que rápido."
+      },
+      {
+        prompt: "Qual palavra está escrita corretamente?",
+        options: ["privilégio", "previlégio", "priviléjio", "previléjio"],
+        answer: "privilégio",
+        help: "Privilégio se escreve com i depois do v."
+      },
+      {
+        prompt: "Complete: Se eu ___ tempo, eu iria à praia.",
+        options: ["tivesse", "tinha", "ter", "tiver"],
+        answer: "tivesse",
+        help: "Depois de 'se' (condição), usamos 'tivesse'."
+      },
+      {
+        prompt: "Qual palavra é paroxítona (sílaba tônica na penúltima)?",
+        options: ["café", "fácil", "Brasil", "papel"],
+        answer: "fácil",
+        help: "Fá-cil: tônica é a primeira de duas, ou seja, a penúltima."
       }
     ];
+
+    // Embaralha o banco e prepara cada pergunta com opcoes tambem embaralhadas.
+    const questions = shuffle(questionBank).map((item) => ({
+      ...item,
+      options: shuffle(item.options)
+    }));
 
     let index = 0;
     let score = 0;
@@ -127,7 +196,7 @@
   }
 
   function initPhraseGame() {
-    const phrases = [
+    const phraseBank = [
       {
         text: "A menina ___ um livro na biblioteca.",
         options: ["leu", "leram", "lendo", "ler"],
@@ -157,8 +226,68 @@
         options: [",", ".", "?", "!"],
         answer: ",",
         help: "A vírgula separa o 'Sim' do restante da frase."
+      },
+      {
+        text: "O sol ___ todas as manhãs.",
+        options: ["nasce", "nasceu", "nascendo", "nascer"],
+        answer: "nasce",
+        help: "Usamos 'nasce' para uma ação que se repete sempre."
+      },
+      {
+        text: "Eu gostaria de ___ um café, por favor.",
+        options: ["tomar", "tomei", "tomo", "tomava"],
+        answer: "tomar",
+        help: "Depois de 'gostaria de', usamos o verbo no infinitivo: tomar."
+      },
+      {
+        text: "Ontem nós ___ ao cinema com os amigos.",
+        options: ["fomos", "vamos", "iremos", "vai"],
+        answer: "fomos",
+        help: "Ontem indica passado: nós fomos."
+      },
+      {
+        text: "O céu está ___ depois da chuva.",
+        options: ["azul", "rápido", "alegre", "doce"],
+        answer: "azul",
+        help: "Azul é uma cor, adequada para descrever o céu."
+      },
+      {
+        text: "A professora ___ a lição no quadro.",
+        options: ["escreveu", "escrevendo", "escrever", "escrevo"],
+        answer: "escreveu",
+        help: "Escreveu é o passado do verbo escrever."
+      },
+      {
+        text: "Coloque o ponto final em: Hoje vai chover ___",
+        options: [".", ",", ":", ";"],
+        answer: ".",
+        help: "O ponto final encerra uma frase declarativa."
+      },
+      {
+        text: "Eles ___ muito felizes com a notícia.",
+        options: ["ficaram", "ficou", "fica", "ficando"],
+        answer: "ficaram",
+        help: "Eles (plural) combina com ficaram."
+      },
+      {
+        text: "A palavra 'cachorro' começa com a letra ___.",
+        options: ["C", "K", "Q", "S"],
+        answer: "C",
+        help: "Cachorro começa com a letra C."
+      },
+      {
+        text: "Eu ___ português todos os dias.",
+        options: ["estudo", "estuda", "estudam", "estudei"],
+        answer: "estudo",
+        help: "Com 'eu', usamos a forma 'estudo'."
       }
     ];
+
+    // Embaralha o banco e tambem a ordem das opcoes de cada frase.
+    const phrases = shuffle(phraseBank).map((item) => ({
+      ...item,
+      options: shuffle(item.options)
+    }));
 
     let index = 0;
     let score = 0;
@@ -219,36 +348,39 @@
   }
 
   function initMemoryGame() {
-    const pairs = [
+    const allPairs = [
       { id: "livro", values: ["LIVRO", "objeto para ler"] },
       { id: "casa", values: ["CASA", "lugar de morar"] },
       { id: "feliz", values: ["FELIZ", "sentimento bom"] },
       { id: "chuva", values: ["CHUVA", "água do céu"] },
       { id: "amigo", values: ["AMIGO", "pessoa querida"] },
-      { id: "escola", values: ["ESCOLA", "lugar de aprender"] }
+      { id: "escola", values: ["ESCOLA", "lugar de aprender"] },
+      { id: "sol", values: ["SOL", "estrela do dia"] },
+      { id: "flor", values: ["FLOR", "nasce no jardim"] },
+      { id: "musica", values: ["MÚSICA", "som que se canta"] },
+      { id: "professor", values: ["PROFESSOR", "quem ensina"] }
     ];
+
+    // A cada partida sorteia 6 pares dentro do banco maior.
+    const pairs = shuffle(allPairs).slice(0, 6);
 
     const grid = document.getElementById("memory-grid");
     const restart = document.getElementById("memory-restart");
     let firstCard = null;
     let lock = false;
     let matches = 0;
+    let currentPairs = pairs;
 
-    function shuffle(items) {
-      return items
-        .map((item) => ({ item, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ item }) => item);
-    }
-
-    function buildCards() {
-      return shuffle(pairs.flatMap((pair) => pair.values.map((value) => ({
+    function buildCards(pairList) {
+      return shuffle(pairList.flatMap((pair) => pair.values.map((value) => ({
         pair: pair.id,
         value
       }))));
     }
 
     function render() {
+      // Sorteia um novo conjunto de pares ao reiniciar para dar variedade.
+      currentPairs = shuffle(allPairs).slice(0, 6);
       firstCard = null;
       lock = false;
       matches = 0;
@@ -256,7 +388,7 @@
       setText("memory-status", "0 de 6 pares encontrados");
       setText("memory-feedback", "Escolha duas cartas.");
 
-      buildCards().forEach((card, position) => {
+      buildCards(currentPairs).forEach((card, position) => {
         const button = createButton(card.value, () => flip(button), "memory-card is-hidden");
         button.dataset.pair = card.pair;
         button.dataset.value = card.value;
