@@ -442,7 +442,10 @@
   }
 
   initMenu();
-  window.addEventListener("load", initVLibras);
+  // O plugin do VLibras adia a montagem do widget para window.onload,
+  // então o construtor precisa ser chamado antes de a página terminar
+  // de carregar — nunca dentro de um listener de "load".
+  initVLibras();
 
   if (page === "quiz") initQuiz();
   if (page === "frase") initPhraseGame();
