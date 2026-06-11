@@ -25,11 +25,57 @@
     if (element) element.textContent = value;
   }
 
+  // O VLibras descarta "___" ao traduzir, então a frase perderia a posição
+  // da lacuna para quem usa Libras. O span oculto "(lacuna)" entra no
+  // innerText capturado pelo widget e vira o sinal LACUNA no lugar certo,
+  // sem mudar o visual. Leitores de tela também se beneficiam.
+  function setQuestionText(id, value) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.textContent = "";
+    value.split("___").forEach((part, index) => {
+      if (index > 0) {
+        const blank = document.createElement("span");
+        blank.className = "gap-mark";
+        blank.setAttribute("aria-hidden", "true");
+        blank.textContent = "___";
+        const hint = document.createElement("span");
+        hint.className = "sr-only";
+        hint.textContent = " (lacuna) ";
+        element.append(blank, hint);
+      }
+      element.append(document.createTextNode(part));
+    });
+  }
+
+  // Pontuação isolada não gera tradução no VLibras nem leitura em leitores
+  // de tela; o nome por extenso fica oculto dentro do botão.
+  const punctuationNames = {
+    ",": "vírgula",
+    ".": "ponto final",
+    "?": "ponto de interrogação",
+    "!": "ponto de exclamação",
+    ":": "dois pontos",
+    ";": "ponto e vírgula"
+  };
+
   function createButton(label, onClick, className = "answer-option") {
     const button = document.createElement("button");
     button.type = "button";
     button.className = className;
-    button.textContent = label;
+    button.dataset.value = label;
+    const spokenName = punctuationNames[label];
+    if (spokenName) {
+      const symbol = document.createElement("span");
+      symbol.setAttribute("aria-hidden", "true");
+      symbol.textContent = label;
+      const name = document.createElement("span");
+      name.className = "sr-only";
+      name.textContent = spokenName;
+      button.append(symbol, name);
+    } else {
+      button.textContent = label;
+    }
     button.addEventListener("click", onClick);
     return button;
   }
@@ -49,13 +95,13 @@
         prompt: "Qual palavra está escrita corretamente?",
         options: ["Excessão", "Exceção", "Eceção", "Esceção"],
         answer: "Exceção",
-        help: "Exceção se escreve com x e ç."
+        help: "Exceção se escreve com xis e cê-cedilha."
       },
       {
         prompt: "Complete: Eu trouxe meu ___ para a aula.",
         options: ["caderno", "cadernu", "cadernoo", "cadeno"],
         answer: "caderno",
-        help: "Caderno termina com -no."
+        help: "Caderno termina com ene e ó."
       },
       {
         prompt: "Qual forma combina com a frase: Eles ___ cedo.",
@@ -67,13 +113,13 @@
         prompt: "Escolha a palavra com acento correto.",
         options: ["lapis", "lápis", "lapís", "làpis"],
         answer: "lápis",
-        help: "Lápis tem acento agudo no a."
+        help: "Lápis tem acento agudo na letra A."
       },
       {
-        prompt: "Qual palavra usa ç?",
+        prompt: "Qual palavra usa cê-cedilha?",
         options: ["coraçao", "coração", "corassão", "corasão"],
         answer: "coração",
-        help: "Coração usa ç e ão."
+        help: "Coração se escreve com cê-cedilha e termina com ão."
       },
       {
         prompt: "Qual é o plural de 'cidadão'?",
@@ -85,25 +131,25 @@
         prompt: "Qual palavra está escrita corretamente?",
         options: ["pesquisa", "pesquiza", "peskisa", "pescuisa"],
         answer: "pesquisa",
-        help: "Pesquisa se escreve com s, não com z."
+        help: "Pesquisa não se escreve com a letra Z."
       },
       {
         prompt: "Complete: A professora ___ o livro para nós.",
         options: ["leu", "leeu", "lê-o", "leuo"],
         answer: "leu",
-        help: "Leu é o passado de ler."
+        help: "Leu mostra que a ação já aconteceu."
       },
       {
-        prompt: "Qual palavra tem o som de 'x' como em 'táxi'?",
+        prompt: "Qual palavra tem o som de x como em táxi?",
         options: ["enxame", "exame", "enxada", "enxergar"],
         answer: "exame",
-        help: "Em 'exame', o x tem som de 'z'/'cs', igual a 'táxi'."
+        help: "Em exame, o x tem som de z, igual a táxi."
       },
       {
         prompt: "Qual frase está correta?",
         options: ["Houveram problemas.", "Houve problemas.", "Ouve problemas.", "Houvi problemas."],
         answer: "Houve problemas.",
-        help: "O verbo 'haver' no sentido de existir fica no singular."
+        help: "O verbo haver no sentido de existir fica no singular."
       },
       {
         prompt: "Qual é o sinônimo de 'rápido'?",
@@ -115,19 +161,19 @@
         prompt: "Qual palavra está escrita corretamente?",
         options: ["privilégio", "previlégio", "priviléjio", "previléjio"],
         answer: "privilégio",
-        help: "Privilégio se escreve com i depois do v."
+        help: "Privilégio se escreve com a letra i depois do v."
       },
       {
         prompt: "Complete: Se eu ___ tempo, eu iria à praia.",
         options: ["tivesse", "tinha", "ter", "tiver"],
         answer: "tivesse",
-        help: "Depois de 'se' (condição), usamos 'tivesse'."
+        help: "Para indicar condição, a forma certa é tivesse."
       },
       {
         prompt: "Qual palavra é paroxítona (sílaba tônica na penúltima)?",
         options: ["café", "fácil", "Brasil", "papel"],
         answer: "fácil",
-        help: "Fá-cil: tônica é a primeira de duas, ou seja, a penúltima."
+        help: "A palavra fácil tem a sílaba forte na penúltima sílaba."
       }
     ];
 
@@ -149,7 +195,7 @@
       const item = questions[index];
       setText("quiz-progress", `Pergunta ${index + 1} de ${questions.length}`);
       setText("quiz-score", `${score} pontos`);
-      setText("quiz-question", item.prompt);
+      setQuestionText("quiz-question", item.prompt);
       setText("quiz-feedback", "Escolha uma opção.");
       document.getElementById("quiz-feedback").className = "feedback";
       options.innerHTML = "";
@@ -163,7 +209,7 @@
 
           Array.from(options.children).forEach((child) => {
             child.disabled = true;
-            if (child.textContent === item.answer) child.classList.add("correct");
+            if (child.dataset.value === item.answer) child.classList.add("correct");
           });
 
           if (!isCorrect) event.currentTarget.classList.add("wrong");
@@ -201,13 +247,13 @@
         text: "A menina ___ um livro na biblioteca.",
         options: ["leu", "leram", "lendo", "ler"],
         answer: "leu",
-        help: "A menina leu: ação no passado."
+        help: "Leu mostra que a ação já aconteceu."
       },
       {
         text: "Nós gostamos de ___ histórias.",
         options: ["contar", "contou", "contam", "contei"],
         answer: "contar",
-        help: "Depois de 'gostamos de', usamos contar."
+        help: "A frase certa é: nós gostamos de contar histórias."
       },
       {
         text: "O cachorro correu pelo ___.",
@@ -219,31 +265,31 @@
         text: "A palavra ___ tem três sílabas.",
         options: ["banana", "sol", "paz", "mar"],
         answer: "banana",
-        help: "Ba-na-na tem três sílabas."
+        help: "A palavra banana tem três sílabas."
       },
       {
         text: "Use uma vírgula em: Sim ___ eu aceito.",
         options: [",", ".", "?", "!"],
         answer: ",",
-        help: "A vírgula separa o 'Sim' do restante da frase."
+        help: "A vírgula separa o Sim do restante da frase."
       },
       {
         text: "O sol ___ todas as manhãs.",
         options: ["nasce", "nasceu", "nascendo", "nascer"],
         answer: "nasce",
-        help: "Usamos 'nasce' para uma ação que se repete sempre."
+        help: "Usamos nasce para uma ação que se repete sempre."
       },
       {
         text: "Eu gostaria de ___ um café, por favor.",
         options: ["tomar", "tomei", "tomo", "tomava"],
         answer: "tomar",
-        help: "Depois de 'gostaria de', usamos o verbo no infinitivo: tomar."
+        help: "A frase certa é: eu gostaria de tomar um café."
       },
       {
         text: "Ontem nós ___ ao cinema com os amigos.",
         options: ["fomos", "vamos", "iremos", "vai"],
         answer: "fomos",
-        help: "Ontem indica passado: nós fomos."
+        help: "Ontem mostra que a ação já aconteceu: nós fomos."
       },
       {
         text: "O céu está ___ depois da chuva.",
@@ -255,7 +301,7 @@
         text: "A professora ___ a lição no quadro.",
         options: ["escreveu", "escrevendo", "escrever", "escrevo"],
         answer: "escreveu",
-        help: "Escreveu é o passado do verbo escrever."
+        help: "Escreveu mostra que a ação já aconteceu."
       },
       {
         text: "Coloque o ponto final em: Hoje vai chover ___",
@@ -267,7 +313,7 @@
         text: "Eles ___ muito felizes com a notícia.",
         options: ["ficaram", "ficou", "fica", "ficando"],
         answer: "ficaram",
-        help: "Eles (plural) combina com ficaram."
+        help: "Eles combina com ficaram."
       },
       {
         text: "A palavra 'cachorro' começa com a letra ___.",
@@ -279,7 +325,7 @@
         text: "Eu ___ português todos os dias.",
         options: ["estudo", "estuda", "estudam", "estudei"],
         answer: "estudo",
-        help: "Com 'eu', usamos a forma 'estudo'."
+        help: "Com eu, usamos a forma estudo."
       }
     ];
 
@@ -301,7 +347,7 @@
       const item = phrases[index];
       setText("phrase-progress", `Frase ${index + 1} de ${phrases.length}`);
       setText("phrase-score", `${score} pontos`);
-      setText("phrase-question", item.text);
+      setQuestionText("phrase-question", item.text);
       setText("phrase-feedback", "Escolha uma palavra.");
       document.getElementById("phrase-feedback").className = "feedback";
       options.innerHTML = "";
@@ -315,7 +361,7 @@
 
           Array.from(options.children).forEach((child) => {
             child.disabled = true;
-            if (child.textContent === item.answer) child.classList.add("correct");
+            if (child.dataset.value === item.answer) child.classList.add("correct");
           });
 
           if (!isCorrect) event.currentTarget.classList.add("wrong");
@@ -389,7 +435,10 @@
       setText("memory-feedback", "Escolha duas cartas.");
 
       buildCards(currentPairs).forEach((card, position) => {
-        const button = createButton(card.value, () => flip(button), "memory-card is-hidden");
+        // A carta fechada não pode ter a palavra no DOM: o VLibras traduz o
+        // innerText do elemento clicado e revelaria a resposta (cor
+        // transparente não esconde texto do innerText).
+        const button = createButton("", () => flip(button), "memory-card is-hidden");
         button.dataset.pair = card.pair;
         button.dataset.value = card.value;
         button.setAttribute("aria-label", `Carta ${position + 1}, escondida`);
@@ -401,6 +450,7 @@
       if (lock || card.classList.contains("is-matched") || card === firstCard) return;
 
       card.classList.remove("is-hidden");
+      card.textContent = card.dataset.value;
       card.setAttribute("aria-label", `Carta aberta: ${card.dataset.value}`);
 
       if (!firstCard) {
@@ -429,6 +479,8 @@
           if (!cardToHide || !secondCard) return;
           cardToHide.classList.add("is-hidden");
           secondCard.classList.add("is-hidden");
+          cardToHide.textContent = "";
+          secondCard.textContent = "";
           cardToHide.setAttribute("aria-label", "Carta escondida");
           secondCard.setAttribute("aria-label", "Carta escondida");
           firstCard = null;

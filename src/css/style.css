@@ -168,6 +168,27 @@ p {
   text-wrap: pretty;
 }
 
+/* Texto invisível na tela, mas presente no innerText: o VLibras e os
+   leitores de tela usam esse conteúdo (ex.: "(lacuna)", "vírgula"). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* O clique (e a captura de texto do VLibras) deve atingir o parágrafo ou o
+   botão inteiro, nunca um span interno isolado. */
+.gap-mark,
+.answer-option span {
+  pointer-events: none;
+}
+
 h1,
 h2,
 h3 {
