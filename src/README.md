@@ -10,7 +10,7 @@
 |-------|-----------|
 | Nome da aplicação | *Quizzer* |
 | Tecnologias utilizadas | *HTML, js, CSS* |
-| URL em produção | *[(preencher, se hospedado)](https://icei-puc-minas-ppc-cc.github.io/seminarios3-manha-2026-01-grupo2/src/index.html)* |
+| URL em produção | *[(Quizzer)](https://icei-puc-minas-ppc-cc.github.io/seminarios3-manha-2026-01-grupo2/src/index.html)* |
 
 ## Como Executar Localmente
 
