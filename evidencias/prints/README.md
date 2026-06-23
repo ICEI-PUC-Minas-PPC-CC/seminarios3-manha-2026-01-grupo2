@@ -1,6 +1,4 @@
 # Prints de Tela
 
-Coloque aqui os prints de tela da aplicação desenvolvida.
-
-> **Exemplos:** tela inicial, telas de funcionalidades principais, tela de cadastro, resultados, etc.
-> Estes prints serão anexados ao relatório enviado na atividade do Canvas.
+<img width="1853" height="922" alt="image" src="https://github.com/user-attachments/assets/1e1cfd08-92c5-4203-a637-a4e8f406e570" />
+ - tela inicial
