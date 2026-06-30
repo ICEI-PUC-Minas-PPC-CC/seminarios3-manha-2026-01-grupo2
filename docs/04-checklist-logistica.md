@@ -51,7 +51,7 @@
 
 - [X] Fotos organizadas em `evidencias/fotos/`
 - [X] Prints de tela da aplicação salvos em `evidencias/prints/`
-- [X] Diário de bordo finalizado (`05-diario-bordo.md`)
+- [ ] Diário de bordo finalizado (`05-diario-bordo.md`)
 - [X] Relatório de atividades preenchido no APC (baseado em `07-relatorio-atividades.md`)
 - [X] Autoavaliação individual preenchida no APC
 - [X] Relatório revisado (cronograma detalhado, evidências anexadas)
