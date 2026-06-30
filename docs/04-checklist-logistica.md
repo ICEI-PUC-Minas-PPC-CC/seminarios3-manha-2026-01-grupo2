@@ -32,27 +32,27 @@
 - [X] Contato intermediário com a comunidade para validação
 - [X] MVP funcional concluído
 - [X] Testes realizados
-- [ ] Deploy em nuvem realizado (se aplicável)
-- [ ] Aplicação acessível pela Internet
+- [X] Deploy em nuvem realizado (se aplicável)
+- [X] Aplicação acessível pela Internet
 
 ## 📋 Etapa 4 — Entrega Presencial
 
-- [ ] Data e horário confirmados com o colégio
-- [ ] Local confirmado (colégio ou PUC Minas)
-- [ ] Aplicação testada no ambiente de entrega (navegador, internet)
-- [ ] Plano B preparado (versão offline, se possível)
-- [ ] Transporte/deslocamento do grupo planejado
-- [ ] Todos os integrantes confirmados para o dia
-- [ ] **Entrega realizada**
-- [ ] Fotos registradas (mínimo 10 fotos variadas)
-- [ ] Software demonstrado e explicado aos usuários
+- [X] Data e horário confirmados com o colégio
+- [X] Local confirmado (colégio ou PUC Minas)
+- [X] Aplicação testada no ambiente de entrega (navegador, internet)
+- [X] Plano B preparado (versão offline, se possível)
+- [X] Transporte/deslocamento do grupo planejado
+- [X] Todos os integrantes confirmados para o dia
+- [X] **Entrega realizada**
+- [X] Fotos registradas (mínimo 10 fotos variadas)
+- [X] Software demonstrado e explicado aos usuários
 
 ## 📋 Etapa 5 — Pós-Entrega e Relatórios
 
-- [ ] Fotos organizadas em `evidencias/fotos/`
-- [ ] Prints de tela da aplicação salvos em `evidencias/prints/`
-- [ ] Diário de bordo finalizado (`05-diario-bordo.md`)
-- [ ] Relatório de atividades preenchido no APC (baseado em `07-relatorio-atividades.md`)
-- [ ] Autoavaliação individual preenchida no APC
-- [ ] Relatório revisado (cronograma detalhado, evidências anexadas)
+- [X] Fotos organizadas em `evidencias/fotos/`
+- [X] Prints de tela da aplicação salvos em `evidencias/prints/`
+- [X] Diário de bordo finalizado (`05-diario-bordo.md`)
+- [X] Relatório de atividades preenchido no APC (baseado em `07-relatorio-atividades.md`)
+- [X] Autoavaliação individual preenchida no APC
+- [X] Relatório revisado (cronograma detalhado, evidências anexadas)
 - [ ] **Relatório aprovado pelo professor**
